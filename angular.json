@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "roberto-pruebas"
+    }
+  },
+  "defaultProject": "roberto-pruebas",
+  "cli": {
+    "analytics": false
+  }
 }
