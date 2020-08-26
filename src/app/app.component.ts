@@ -27,4 +27,10 @@ export class AppComponent implements OnInit{
     console.log(this.data);
     
   }
+
+
+  agregarHref(){
+    console.log(this);
+    
+  }
 }

@@ -12,8 +12,8 @@
         <th>TOTAL GENERAL</th>
       </tr>
     </thead> 
-    <tbody *ngFor="let lotes of data">
-      <tr href="#demo" data-toggle="collapse"
+    <tbody *ngFor="let lotes of data; index as i">
+      <tr [attr.href]="'#demo'+i" data-toggle="collapse"
         ngbTooltip="Nivel 1" style="cursor: pointer;background-color: #E4F0E0; background: mediumturquoise;"
         (click)="data1.status===false? data1.status=true:data1.status=false">
 
@@ -26,10 +26,10 @@
       </tr>
       <tr ngbTooltip="Nivel 2">
         <td colspan="6" style="height: 0;padding: 0" class="hiddenRow">
-            <div id="demo" class="collapse">
+            <div [id]="'demo'+i" class="collapse">
                 <table class="table">
-                    <tbody style="cursor: pointer;width: 100%" *ngFor="let valvulas of lotes.valvulas">
-                        <tr href='#demo1' style="background-color: #ECF5E9; background: yellow;"  data-toggle="collapse" (click)="data2.status===false? data2.status=true:data2.status=false">
+                    <tbody style="cursor: pointer;width: 100%" *ngFor="let valvulas of lotes.valvulas; index as x">
+                        <tr [attr.href]="'#demo'+i+x" style="background-color: #ECF5E9; background: yellow;"  data-toggle="collapse" (click)="data2.status===false? data2.status=true:data2.status=false">
                           <td>{{valvulas.nombre}}</td>
                           <td>{{valvulas.total1}}</td>
                           <td>{{valvulas.total2}}</td>
@@ -39,10 +39,10 @@
                         </tr>
                         <tr>
                           <td colspan="6" style="height: 0;padding: 0" class="hiddenRow">
-                              <div id="demo1" class="accordian-body collapse">
+                              <div [id]="'demo'+i+x" class="accordian-body collapse">
                                   <table class="table">
-                                      <tbody *ngFor="let familia of valvulas.familia" ngbTooltip="Nivel 3">
-                                          <tr href='#demo2' style="background-color: #F4F9F2; background: green;" data-toggle="collapse" (click)="data3.status===false? data3.status=true:data3.status=false">
+                                      <tbody *ngFor="let familia of valvulas.familia;index as y" ngbTooltip="Nivel 3">
+                                          <tr [attr.href]="'#demo'+i+x+y" style="background-color: #F4F9F2; background: green;" data-toggle="collapse" (click)="data3.status===false? data3.status=true:data3.status=false">
                                             <td>{{familia.nombre}}</td>
                                             <td>{{familia.total1}}</td>
                                             <td>{{familia.total2}}</td>
@@ -52,7 +52,7 @@
                                           </tr>
                                           <tr>
                                             <td colspan="6" style="height: 0;padding: 0" class="hiddenRow">
-                                                <div id="demo2" class="accordian-body collapse">
+                                                <div [id]="'demo'+i+x+y"  class="accordian-body collapse">
                                                     <table class="table">
                                                         <tbody *ngFor="let subfamilia of familia.subfamilia" ngbTooltip="Nivel 4">
                                                             <tr style="background-color:#FFFFFF; background: brown;">
